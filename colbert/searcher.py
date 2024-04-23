@@ -102,6 +102,10 @@ class Searcher:
             for query_idx, qid in tqdm(enumerate(qids))
         ]
 
+        all_scored_pids = [
+            [self.pid_list[pid], rank, score] for scored_pids in all_scored_pids for pid, rank, score in scored_pids
+        ]
+
         data = {qid: val for qid, val in zip(queries.keys(), all_scored_pids)}
 
         provenance = Provenance()
