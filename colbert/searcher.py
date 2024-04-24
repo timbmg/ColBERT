@@ -103,7 +103,8 @@ class Searcher:
         ]
 
         all_scored_pids = [
-            [self.pid_list[pid], rank, score] for scored_pids in all_scored_pids for pid, rank, score in scored_pids
+            [(self.pid_list[pid], rank, score) for pid, rank, score in scored_pids]
+            for scored_pids in all_scored_pids
         ]
 
         data = {qid: val for qid, val in zip(queries.keys(), all_scored_pids)}
